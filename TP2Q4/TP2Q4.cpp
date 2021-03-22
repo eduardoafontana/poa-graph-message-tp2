@@ -1,17 +1,15 @@
 // TP2Q4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-#include <iostream>
-#include "Node.h"
+#include "NodeManager.h"
 
 
 
-int findShortestPath(std::vector<std::vector<node*>>* allPath);
+/*int findShortestPath(std::vector<std::vector<node*>>* allPath);
 void addNode(node* node1, node* node2, int distance);
-void showPath(std::vector<node*>* path);
+void showPath(std::vector<node*>* path);*/
 int main()
 {
-
+    NodeManager manager;
     node* node0 = new node(0);
     node* node1 = new node(1);
     node* node2 = new node(2);
@@ -33,22 +31,23 @@ int main()
     node1->addAdjacentNode(node3, 200);
     node2->addAdjacentNode(node3, 20);
     node3->addAdjacentNode(node4, 20);*/
-    addNode(node0, node1, 10);
-    addNode(node0, node2, 20);
-    addNode(node0, node3, 30);
-    addNode(node1, node3, 100);
-    addNode(node2, node3, 20);
-    addNode(node3, node4, 10);
+    manager.addNode(node0, node1, 10);
+    manager.addNode(node0, node2, 20);
+    manager.addNode(node0, node3, 30);
+    manager.addNode(node1, node3, 100);
+    manager.addNode(node2, node3, 20);
+    manager.addNode(node3, node4, 10);
     //node4->addAdjacentNode(nullptr, -1);
     
     //int test = node0->findNode(4);
     //std::cout << test;
-    std::vector<std::vector<node*>>* allPath = new std::vector<std::vector<node*>>;
+    /*std::vector<std::vector<node*>>* allPath = new std::vector<std::vector<node*>>;
     std::vector<node*>* temp = nullptr;
     std::vector<node*>* nodeVisited = nullptr;
-    node0->findPath(2, allPath, temp, nodeVisited, 0);
+    node0->findPath(2, allPath, temp, nodeVisited, 0);*/
+    std::vector<std::vector<node*>>* allPath = manager.allPath(node0, node4);
     
-    int index = findShortestPath(allPath);
+    int index = manager.findShortestPath(allPath);
     //showPath(&allPath->at(index));
     for (int j = 0; j < allPath->size(); j++) {
         for (int i = 0; i < allPath->at(j).size(); i++) {
@@ -65,38 +64,10 @@ int main()
     delete node3;
     delete node4;
     delete allPath;
-    delete temp;
-    delete nodeVisited;
+    //delete temp;
+    //delete nodeVisited;
 }
-int findShortestPath(std::vector<std::vector<node*>>* allPath) {
-    int tempo = 1000;
-    int shortest = 0;
-    int index = 0;
-    for (int i = 0; i < allPath->size(); i++) {
-        shortest = 0;
-        for (int j = 0; j < allPath->at(i).size() - 1; j++) {
-            for (int k = 0; k < allPath->at(i).at(j)->adjacentNode.size(); k++) {
-                if (allPath->at(i).at(j + 1)->nodeName == allPath->at(i).at(j)->adjacentNode.at(k)->nodeName) {
-                    shortest += allPath->at(i).at(j)->distanceList.at(k);
-                }
-            }
-        }
-        if (shortest <= tempo) {
-            tempo = shortest;
-            index = i;
-        }
-    }
-    return index;
-}
-void showPath(std::vector<node*>* path) {
-    for (int i = 0; i < path->size(); i++) {
-        std::cout << path->at(i)->nodeName << "-";
-    }
-}
-void addNode(node* node1, node* node2, int distance) {
-    node1->addAdjacentNode(node2, distance);
-    node2->addAdjacentNode(node1, distance);
-}
+
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
