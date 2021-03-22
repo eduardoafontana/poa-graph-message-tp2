@@ -1,5 +1,5 @@
 #include "NodeManager.h"
-
+#include <algorithm>
 
 
 NodeManager::NodeManager()
@@ -49,4 +49,11 @@ std::vector<std::vector<node*>>* NodeManager::allPath(node* startingNode, node* 
     std::vector<node*>* nodeVisited = nullptr;
     startingNode->findPath(endingNode->nodeName, allPath, temp, nodeVisited, 0);
     return allPath;
+}
+
+void NodeManager::sortPath(std::vector<std::vector<node*>>* allPath)
+{
+    std::sort(allPath->begin(), allPath->end(), [](const std::vector<node*>A, const std::vector<node*>B) {
+        return A.size() < B.size();
+        });
 }

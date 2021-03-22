@@ -48,13 +48,25 @@ int main()
     std::vector<std::vector<node*>>* allPath = manager.allPath(node0, node4);
     
     int index = manager.findShortestPath(allPath);
-    //showPath(&allPath->at(index));
-    for (int j = 0; j < allPath->size(); j++) {
+    std::cout << "before sort" << std::endl;
+    for (int i = 0; i < allPath->size(); i++) {
+        manager.showPath(&allPath->at(i));
+        std::cout << std::endl;
+    }
+    std::cout << "after sort" << std::endl;
+    manager.sortPath(allPath);
+    for (int i = 0; i < allPath->size(); i++) {
+        manager.showPath(&allPath->at(i));
+        std::cout << std::endl;
+    }
+    //manager.showPath(&allPath->at(index));manager.showPath(&allPath->at(index));
+
+    /*for (int j = 0; j < allPath->size(); j++) {
         for (int i = 0; i < allPath->at(j).size(); i++) {
             std::cout << allPath->at(j).at(i)->nodeName << "-";
         }
         std::cout << std::endl;
-    }
+    }*/
     
     
 
