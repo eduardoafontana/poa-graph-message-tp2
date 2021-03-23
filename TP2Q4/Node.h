@@ -9,6 +9,7 @@ class node {
 public:
 	// contains the list off Node that this node can reach
 	std::vector<node*> adjacentNode;
+	int points = 0;
 	//contains the distance from this node to the other node. Same pos same node ex. distanceList.at(0) is the distance for the node adjacentNode.at(0)
 	std::vector<int> distanceList;
 	int nodeName;

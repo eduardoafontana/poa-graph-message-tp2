@@ -57,3 +57,12 @@ void NodeManager::sortPath(std::vector<std::vector<node*>>* allPath)
         return A.size() < B.size();
         });
 }
+
+void NodeManager::addPoints(std::vector<std::vector<node*>>* allPath)
+{
+    for (int i = 0; i < allPath->size(); i++) {
+        for (int j = 1; j < allPath->at(i).size() - 1; j++) {
+            allPath->at(i).at(j)->points++;
+        }
+    }
+}

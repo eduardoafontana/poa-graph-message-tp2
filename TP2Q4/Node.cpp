@@ -44,14 +44,17 @@ void node::findPath(int nodeToFind, std::vector<std::vector<node*>>* allPath, st
 							visited = true;
 					}
 					if (visited == false) {
+						if (distance + distanceList.at(i) > 130) {
+							delete actualPath;
+							delete nodeVisited;
+							return;
+						}
 						nodeVisited->push_back(this);
 						actualPath->push_back(this);
 					}
-					if (distance + distanceList.at(i) > 10000) {
-						delete actualPath;
-						delete nodeVisited;
-						return;
-					}
+					//tcheck if ok. 
+					
+					
 					if (adjacentNode.at(i)->nodeName == nodeToFind) {
 						actualPath->push_back(adjacentNode.at(i));
 						allPath->push_back((*actualPath));

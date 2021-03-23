@@ -15,6 +15,7 @@ int main()
     node* node2 = new node(2);
     node* node3 = new node(3);
     node* node4 = new node(4);
+    node* node5 = new node(5);
     /*node0->addAdjacentNode(node1, 10);
     node0->addAdjacentNode(node2, 20);
     node0->addAdjacentNode(node3, 10);
@@ -34,11 +35,10 @@ int main()
     manager.addNode(node0, node1, 10);
     manager.addNode(node0, node2, 20);
     manager.addNode(node0, node3, 30);
-    manager.addNode(node1, node3, 100);
+    manager.addNode(node1, node3, 10);
     manager.addNode(node2, node3, 20);
     manager.addNode(node3, node4, 10);
     //node4->addAdjacentNode(nullptr, -1);
-    
     //int test = node0->findNode(4);
     //std::cout << test;
     /*std::vector<std::vector<node*>>* allPath = new std::vector<std::vector<node*>>;
@@ -46,8 +46,9 @@ int main()
     std::vector<node*>* nodeVisited = nullptr;
     node0->findPath(2, allPath, temp, nodeVisited, 0);*/
     std::vector<std::vector<node*>>* allPath = manager.allPath(node0, node4);
-    
-    int index = manager.findShortestPath(allPath);
+    manager.addPoints(allPath);
+    //std::cout << node3->points << std::endl;
+    //int index = manager.findShortestPath(allPath);
     std::cout << "before sort" << std::endl;
     for (int i = 0; i < allPath->size(); i++) {
         manager.showPath(&allPath->at(i));
@@ -59,7 +60,9 @@ int main()
         manager.showPath(&allPath->at(i));
         std::cout << std::endl;
     }
-    //manager.showPath(&allPath->at(index));manager.showPath(&allPath->at(index));
+    /*int index = manager.findShortestPath(allPath);
+    manager.showPath(&allPath->at(index));*/
+    //manager.showPath(&allPath->at(index));
 
     /*for (int j = 0; j < allPath->size(); j++) {
         for (int i = 0; i < allPath->at(j).size(); i++) {
@@ -75,6 +78,7 @@ int main()
     delete node2;
     delete node3;
     delete node4;
+    delete node5;
     delete allPath;
     //delete temp;
     //delete nodeVisited;
