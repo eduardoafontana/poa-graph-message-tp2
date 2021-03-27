@@ -1,15 +1,29 @@
 #pragma once
 #include "Node.h"
 #include <iostream>
+#include "Distance.h"
+#include "Presentation.h"
 class NodeManager
 {
 public:
 	NodeManager();
-	int findShortestPath(std::vector<std::vector<node*>>* allPath);
-	void showPath(std::vector<node*>* path);
-	void addNode(node* node1, node* node2, int distance);
-	std::vector<std::vector<node*>>* allPath(node* startingNode, node* endingNode);
-	void sortPath(std::vector<std::vector<node*>> *allPath);
+	~NodeManager();
+
+	node* startingNode = nullptr;
+	node* endingNode = nullptr;	
 	void addPoints(std::vector<std::vector<node*>>* allPath);
+	void addPoints(std::vector<node*>* actualPath);
+	void setMaxDistance(double maxDistance) {
+		this->maxDistance = maxDistance;
+	}
+	std::vector<node*> getNodeList() {
+		return nodeList;
+	}
+	void findPathUsingShortestDistance(node* startingNode, node* endingNode, std::vector<node*>* actualPath, std::vector<node*>* nodeVisited);
+private: 
+	void playGame();
+	std::vector<node*> nodeList;
+	double maxDistance = 0;
+	
 };
 
