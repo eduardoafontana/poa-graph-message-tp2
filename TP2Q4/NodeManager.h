@@ -20,7 +20,6 @@ public:
 	}
 	void findPathUsingShortestDistance(node* startingNode, node* endingNode, std::vector<node*>* actualPath, std::vector<node*>* nodeVisited);
  
-	//void playGame();
 	std::vector<node*> nodeList;
 	double maxDistance = 0;
 	

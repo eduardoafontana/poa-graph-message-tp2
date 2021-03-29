@@ -3,7 +3,7 @@
 void Presentation::showPath(std::vector<node*>* path)
 {
     /// <summary>
-    /// shows the pass passed in arguement using lambda
+    /// shows the path passed in arguement using lambda
     /// </summary>
     /// <param name="path">a vector containing the path that we want to show</param>
     
