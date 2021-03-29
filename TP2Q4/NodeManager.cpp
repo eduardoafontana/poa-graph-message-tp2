@@ -7,7 +7,7 @@
 NodeManager::NodeManager()
 {
     nodeList = Graph::createGraph();
-    playGame();
+    //playGame();
     
 }
 
@@ -120,7 +120,7 @@ void NodeManager::findPathUsingShortestDistance(node* startingNode, node* ending
     }
 }
 
-void NodeManager::playGame()
+/*void NodeManager::playGame()
 {
     /// <summary>
     /// the loop containing all the game
@@ -168,4 +168,4 @@ void NodeManager::playGame()
         
     } while (Presentation::continuePlaying());
     Presentation::showWinningNode(nodeList);
-}
+}*/
