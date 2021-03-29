@@ -22,11 +22,6 @@ NodeManager::~NodeManager()
         });
 }
 
-
-
-
-
-
 void NodeManager::addPoints(std::vector<node*>* actualPath)
 {
     /// <summary>
@@ -38,13 +33,7 @@ void NodeManager::addPoints(std::vector<node*>* actualPath)
     std::for_each(actualPath->begin() + 1, actualPath->end() - 1, [](node* node) {
         node->points ++;
         });
-    
 }
-
-
-
-
-
 
 
 void NodeManager::findPathUsingShortestDistance(node* startingNode, node* endingNode, std::vector<node*>* actualPath, std::vector<node*>* nodeVisited)
@@ -159,13 +148,16 @@ void NodeManager::playGame()
             std::vector<node*>* actualPath = new std::vector<node*>;
             std::vector<node*>* nodeVisited = nullptr;
             findPathUsingShortestDistance(startingNode, endingNode, actualPath, nodeVisited);
-            if (actualPath->size() != 0) {
+            
+            if (actualPath->size() > 0) {
                 addPoints(actualPath);
                 Presentation::showPath(actualPath);
+                int abc = 123;
                 delete actualPath;
             }
             else
-                Presentation::noPathFound;
+                Presentation::showNoPathFound();
+            
 
             delete nodeVisited;
 

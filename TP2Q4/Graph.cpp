@@ -7,22 +7,61 @@ std::vector<node*> Graph::createGraph()
     /// </summary>
     
     std::vector<node*> nodeList;
-    node* node0 = new node(0, 0, 4);
-    node* node1 = new node(1, 4, 4);
-    node* node2 = new node(2, 5, 5);
-    node* node3 = new node(3, 5, 3);
-    node* node4 = new node(4, 8, 4);
-    addNode(node0, node1);
-    addNode(node1, node2);
-    addNode(node1, node3);
-    addNode(node2, node3);
-    addNode(node2, node4);
-    addNode(node3, node4);
-    nodeList.push_back(node0);
-    nodeList.push_back(node1);
-    nodeList.push_back(node2);
-    nodeList.push_back(node3);
-    nodeList.push_back(node4);
+    node* nodeP1 = new node(1, "P1", 1, 6);
+    node* nodeP2 = new node(2, "P2", 3, 4);
+    node* nodeP3 = new node(3, "P3", 5, 6);
+    node* nodeP4 = new node(4, "P4", 5, 4);
+    node* nodeP5 = new node(5, "P5", 8, 9);
+    node* nodeP6 = new node(6, "P6", 8, 4);
+    node* nodeP7 = new node(7, "P7", 9, 1);
+    node* nodeP8 = new node(8, "P8", 10, 5);
+    node* nodeP9 = new node(9, "P9", 11, 3);
+    node* nodeP10 = new node(10, "P10", 13, 9);
+    node* nodeP11 = new node(11, "P11", 13, 5);
+    node* nodeP12 = new node(12, "P12", 15, 5);
+
+    addNode(nodeP1, nodeP5);
+    addNode(nodeP1, nodeP3);
+    addNode(nodeP1, nodeP2);
+
+    addNode(nodeP2, nodeP4);
+
+    addNode(nodeP3, nodeP5);
+    addNode(nodeP3, nodeP8);
+    addNode(nodeP3, nodeP6);
+
+    addNode(nodeP4, nodeP6);
+    addNode(nodeP4, nodeP7);
+
+    addNode(nodeP5, nodeP10);
+    addNode(nodeP5, nodeP11);
+
+    addNode(nodeP6, nodeP8);
+    addNode(nodeP6, nodeP9);
+
+    addNode(nodeP7, nodeP9);
+
+    addNode(nodeP8, nodeP11);
+
+    addNode(nodeP9, nodeP12);
+
+    addNode(nodeP10, nodeP11);
+    addNode(nodeP10, nodeP12);
+
+    addNode(nodeP11, nodeP12);
+
+    nodeList.push_back(nodeP1);
+    nodeList.push_back(nodeP2);
+    nodeList.push_back(nodeP3);
+    nodeList.push_back(nodeP4);
+    nodeList.push_back(nodeP5);
+    nodeList.push_back(nodeP6);
+    nodeList.push_back(nodeP7);
+    nodeList.push_back(nodeP8);
+    nodeList.push_back(nodeP9);
+    nodeList.push_back(nodeP10);
+    nodeList.push_back(nodeP11);
+    nodeList.push_back(nodeP12);
     return nodeList;
 }
 
