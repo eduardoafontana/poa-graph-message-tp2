@@ -2,7 +2,7 @@
 
 
 
-node::node(int nodeName, double posX, double posY)
+node::node(int nodeName,std::string name, double posX, double posY)
 {
 	/// <summary>
 	/// constructor 
@@ -10,6 +10,8 @@ node::node(int nodeName, double posX, double posY)
 	/// <param name="nodeName">just a number so we can identifiate the node</param>
 	/// <param name="posX">its pos in the graph</param>
 	/// <param name="posY">its pos in the graph</param>
+	
+	this->name = name;
 	this->nodeName = nodeName;
 	this->posX = posX;
 	this->posY = posY;

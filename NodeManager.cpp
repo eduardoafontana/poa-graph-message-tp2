@@ -7,7 +7,7 @@
 NodeManager::NodeManager()
 {
     nodeList = Graph::createGraph();
-    playGame();
+    //playGame();
     
 }
 
@@ -22,11 +22,6 @@ NodeManager::~NodeManager()
         });
 }
 
-
-
-
-
-
 void NodeManager::addPoints(std::vector<node*>* actualPath)
 {
     /// <summary>
@@ -38,13 +33,7 @@ void NodeManager::addPoints(std::vector<node*>* actualPath)
     std::for_each(actualPath->begin() + 1, actualPath->end() - 1, [](node* node) {
         node->points ++;
         });
-    
 }
-
-
-
-
-
 
 
 void NodeManager::findPathUsingShortestDistance(node* startingNode, node* endingNode, std::vector<node*>* actualPath, std::vector<node*>* nodeVisited)
@@ -129,51 +118,4 @@ void NodeManager::findPathUsingShortestDistance(node* startingNode, node* ending
         nodeVisited->push_back(startingNode);
         findPathUsingShortestDistance(startingNode->adjacentNode.at(tempIndex), endingNode, actualPath, nodeVisited);
     }
-}
-
-void NodeManager::playGame()
-{
-    /// <summary>
-    /// the loop containing all the game
-    /// </summary>
-    /// 
-    Presentation::showNodeList(nodeList);
-    do {
-        int startingNodeName = Presentation::getStartingNode();
-        int endingNodeName = Presentation::getEndingNode();
-        
-        bool findStarting = false;
-        bool findEnding = false;
-        for (int i = 0; i < nodeList.size(); i++) {
-            if (startingNodeName == nodeList.at(i)->nodeName) {
-                startingNode = nodeList.at(i);
-                findStarting = true;
-            }
-            if (endingNodeName == nodeList.at(i)->nodeName) {
-                endingNode = nodeList.at(i);
-                findEnding = true;
-            }
-        }
-        if (findEnding && findStarting) {
-            maxDistance = Presentation::getMaxDistance();
-            std::vector<node*>* actualPath = new std::vector<node*>;
-            std::vector<node*>* nodeVisited = nullptr;
-            findPathUsingShortestDistance(startingNode, endingNode, actualPath, nodeVisited);
-            if (actualPath->size() != 0) {
-                addPoints(actualPath);
-                Presentation::showPath(actualPath);
-                delete actualPath;
-            }
-            else
-                Presentation::noPathFound;
-
-            delete nodeVisited;
-
-        }
-        else
-            Presentation::nodeDidntFound();
-        
-        
-    } while (Presentation::continuePlaying());
-    Presentation::showWinningNode(nodeList);
 }

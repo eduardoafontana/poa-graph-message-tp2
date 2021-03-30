@@ -12,9 +12,9 @@ public:
 	static int getStartingNode();
 	static int getEndingNode();
 	static double getMaxDistance();
-	static void noPathFound();
 	static void nodeDidntFound();
 	static bool continuePlaying();
 	static void showNodeList(std::vector<node*> nodeList);
+	static void showNoPathFound();
 };
 

@@ -3,14 +3,14 @@
 void Presentation::showPath(std::vector<node*>* path)
 {
     /// <summary>
-    /// shows the pass passed in arguement using lambda
+    /// shows the path passed in arguement using lambda
     /// </summary>
     /// <param name="path">a vector containing the path that we want to show</param>
     
 
     std::cout << "This is the path between the two nodes you selected" << std::endl;
     std::for_each(path->begin(), path->end(), [](const node* node) {
-        std::cout << node->nodeName << "-";
+        std::cout << node->name << " - ";
         });
     std::cout << std::endl;
 }
@@ -30,7 +30,7 @@ void Presentation::showWinningNode(std::vector<node*> nodeList)
     //unsing lambda to show the winning points
     std::for_each(nodeList.begin(), nodeList.end(), [&](node* node) {
         if (node->points == maxPoints)
-            std::cout << node->nodeName << " with : " << node->points << " points" << std::endl;
+            std::cout <<"Node " << node->name << " with : " << node->points << " points" << std::endl;
         });
 }
 
@@ -80,10 +80,6 @@ double Presentation::getMaxDistance()
     
 }
 
-void Presentation::noPathFound()
-{
-    std::cout << "Cannot find a path between the two node you selected" << std::endl;
-}
 
 void Presentation::nodeDidntFound()
 {
@@ -106,6 +102,12 @@ void Presentation::showNodeList(std::vector<node*> nodeList)
 {
     std::cout << "This is the list of possible nodes : " << std::endl;
     for (int i = 0; i < nodeList.size(); i++) {
-        std::cout << i << " -> Node" << nodeList.at(i)->nodeName << std::endl;
+        std::cout << nodeList.at(i)->nodeName << " -> Node " << nodeList.at(i)->name << std::endl;
     }
 }
+
+void Presentation::showNoPathFound()
+{
+    std::cout << "No Path found between the two nodes you selected with the maxDistance you entered!" << std::endl;
+}
+

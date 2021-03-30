@@ -1,6 +1,6 @@
 // TP2Q4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#include "NodeManager.h"
+#include "GameManager.h"
 
 
 
@@ -9,7 +9,8 @@ void addNode(node* node1, node* node2, int distance);
 void showPath(std::vector<node*>* path);*/
 int main()
 {
-    NodeManager manager;
+    //NodeManager manager;
+    GameManager manager;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

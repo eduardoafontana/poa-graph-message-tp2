@@ -4,6 +4,13 @@
 
 class Distance {
 public:
-    static double calculateDistance(double posX1, double posY1, double posX2, double posY2);
+    template <typename t>
+    static t calculateDistance(t posX1, t posY1, t posX2, t posY2);
     
 };
+
+template<typename t>
+inline t Distance::calculateDistance(t posX1, t posY1, t posX2, t posY2)
+{
+    return std::sqrt(std::pow(posX1 - posX2, 2) + std::pow(posY1 - posY2, 2));
+}
