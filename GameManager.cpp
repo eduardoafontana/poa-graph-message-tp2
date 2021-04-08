@@ -13,7 +13,6 @@ GameManager::GameManager() {
 
         bool findStarting = false;
         bool findEnding = false;
-
         for (int i = 0; i < nodeManager.nodeList.size(); i++) {
             if (startingNodeName == nodeManager.nodeList.at(i)->nodeName) {
                 nodeManager.startingNode = nodeManager.nodeList.at(i);
@@ -24,7 +23,6 @@ GameManager::GameManager() {
                 findEnding = true;
             }
         }
-
         if (findEnding && findStarting) {
             nodeManager.maxDistance = Presentation::getMaxDistance();
             std::vector<node*>* actualPath = new std::vector<node*>;
@@ -36,10 +34,14 @@ GameManager::GameManager() {
                 Presentation::showPath(actualPath);
                 delete actualPath;
             }
-            else
+            else {
                 Presentation::showNoPathFound();
+                Presentation::showNodeTooFar(nodeManager.nodeTooFar);
+            }
+
 
             delete nodeVisited;
+
         }
         else
             Presentation::nodeDidntFound();
