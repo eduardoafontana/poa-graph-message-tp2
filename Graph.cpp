@@ -8,20 +8,25 @@ std::vector<node*> Graph::createGraph()
     
     std::vector<node*> nodeList;
     
-    node* nodeP1 = new node(1, "P1", 0, 0);
-    node* nodeP2 = new node(2, "P2", 0, 1);
-    node* nodeP3 = new node(3, "P3", 0, 3);
-    node* nodeP4 = new node(4, "P4", 0, 4);
+	////+++++++++++++++ Question 4 - la partie bonus +++++++++++++++
+	////Pour exécuter la question bonus, décommentez cette partie et commentez celle ci-dessous.
+    //node* nodeP1 = new node(1, "P1", 0, 0);
+    //node* nodeP2 = new node(2, "P2", 0, 1);
+    //node* nodeP3 = new node(3, "P3", 0, 3);
+    //node* nodeP4 = new node(4, "P4", 0, 4);
 
+    //addNode(nodeP1, nodeP2);
+    //addNode(nodeP3, nodeP2);
+    //addNode(nodeP3, nodeP4);
+    //nodeList.push_back(nodeP1);
+    //nodeList.push_back(nodeP2);
+    //nodeList.push_back(nodeP3);
+    //nodeList.push_back(nodeP4);
+	////------------------------------------------------------------
 
-    addNode(nodeP1, nodeP2);
-    addNode(nodeP3, nodeP2);
-    addNode(nodeP3, nodeP4);
-    nodeList.push_back(nodeP1);
-    nodeList.push_back(nodeP2);
-    nodeList.push_back(nodeP3);
-    nodeList.push_back(nodeP4);
-    /*node* nodeP1 = new node(1, "P1", 1, 6);
+	////--------------- Question 4 ------------------
+	////Pour exécuter la question normale, décommentez cette partie et commentez la partie supérieure.
+    node* nodeP1 = new node(1, "P1", 1, 6);
     node* nodeP2 = new node(2, "P2", 3, 4);
     node* nodeP3 = new node(3, "P3", 5, 6);
     node* nodeP4 = new node(4, "P4", 5, 4);
@@ -75,7 +80,9 @@ std::vector<node*> Graph::createGraph()
     nodeList.push_back(nodeP9);
     nodeList.push_back(nodeP10);
     nodeList.push_back(nodeP11);
-    nodeList.push_back(nodeP12);*/
+    nodeList.push_back(nodeP12);
+	////------------------------------------------------------------
+
     return nodeList;
 }
 
