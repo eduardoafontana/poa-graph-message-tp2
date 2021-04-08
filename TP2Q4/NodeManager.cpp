@@ -7,7 +7,6 @@
 NodeManager::NodeManager()
 {
     nodeList = Graph::createGraph();
-    //playGame();
     
 }
 
@@ -29,11 +28,13 @@ void NodeManager::addPoints(std::vector<node*>* actualPath)
     /// </summary>
     /// <param name="allPath">the path between nodeA and nodeB</param>
     
-    //begin + 1 and end -1  so the selectec node by the user doens't have points
+    //begin + 1 and end -1  so the selected node by the user doens't have points
     std::for_each(actualPath->begin() + 1, actualPath->end() - 1, [](node* node) {
         node->points ++;
         });
 }
+
+
 
 
 void NodeManager::findPathUsingShortestDistance(node* startingNode, node* endingNode, std::vector<node*>* actualPath, std::vector<node*>* nodeVisited)
@@ -60,9 +61,9 @@ void NodeManager::findPathUsingShortestDistance(node* startingNode, node* ending
                 tempIndex = i;
             }
         }
-        //actualPath = new std::vector<node*>;
         actualPath->push_back(startingNode);
         if (Distance::calculateDistance(startingNode->posX, startingNode->posY, startingNode->adjacentNode.at(tempIndex)->posX, startingNode->adjacentNode.at(tempIndex)->posY) > maxDistance) {
+            movePoints(startingNode, startingNode->adjacentNode.at(tempIndex));
             delete actualPath;
             actualPath = nullptr;
             return;
@@ -83,20 +84,22 @@ void NodeManager::findPathUsingShortestDistance(node* startingNode, node* ending
         int tempIndex = -1;
         for (int i = 0; i < startingNode->adjacentNode.size(); i++) {
             if (startingNode->adjacentNode.at(i) != actualPath->at(actualPath->size() - 2)) {
-                if (Distance::calculateDistance(startingNode->posX,startingNode->posY, startingNode->adjacentNode.at(i)->posX, startingNode->adjacentNode.at(i)->posY) < shortestDistance) {
-                    shortestDistance = Distance::calculateDistance(startingNode->posX, startingNode->posY, startingNode->adjacentNode.at(i)->posX, startingNode->adjacentNode.at(i)->posY);
+                if (Distance::calculateDistance<double>(startingNode->posX,startingNode->posY, startingNode->adjacentNode.at(i)->posX, startingNode->adjacentNode.at(i)->posY) < shortestDistance) {
+                    shortestDistance = Distance::calculateDistance<double>(startingNode->posX, startingNode->posY, startingNode->adjacentNode.at(i)->posX, startingNode->adjacentNode.at(i)->posY);
                     tempIndex = i;
                 }
             }
         }
-        if (Distance::calculateDistance(startingNode->posX, startingNode->posY, startingNode->adjacentNode.at(tempIndex)->posX, startingNode->adjacentNode.at(tempIndex)->posY)
+        if (Distance::calculateDistance<double>(startingNode->posX, startingNode->posY, startingNode->adjacentNode.at(tempIndex)->posX, startingNode->adjacentNode.at(tempIndex)->posY)
                 > maxDistance) {
+            movePoints(startingNode, startingNode->adjacentNode.at(tempIndex));
+            nodeTooFar = startingNode->adjacentNode.at(tempIndex);
             delete actualPath;
             actualPath = nullptr;
             return;
         }
         bool infinateLoop = false;
-        //check if the node with the shortest distance is different from the node that we already visited(else we would enter in an infinite loop
+        //check if the node with the shortest distance is different from the node that we already visited(else we would enter in an infinite loop using lambda
         std::for_each(nodeVisited->begin(), nodeVisited->end(), [&](node* actualNode) {
             if (actualNode == startingNode->adjacentNode.at(tempIndex)) {
                 delete actualPath;
@@ -118,4 +121,12 @@ void NodeManager::findPathUsingShortestDistance(node* startingNode, node* ending
         nodeVisited->push_back(startingNode);
         findPathUsingShortestDistance(startingNode->adjacentNode.at(tempIndex), endingNode, actualPath, nodeVisited);
     }
+}
+
+void NodeManager::movePoints(node* actualNode, node* nearestNode)
+{  
+    double ratio = maxDistance / Distance::calculateDistance<double>(actualNode->posX, actualNode->posY, nearestNode->posX, nearestNode->posY);
+    double addX = ratio * (nearestNode->posX - actualNode->posX);
+    double addY = ratio * (nearestNode->posY - actualNode->posY);
+    nearestNode->changePos(actualNode->posX + addX, actualNode->posY + addY);
 }

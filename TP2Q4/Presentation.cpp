@@ -89,7 +89,7 @@ void Presentation::nodeDidntFound()
 bool Presentation::continuePlaying()
 {
     std::string continuePlaying;
-    std::cout << "Do you want to continue playing ? continuer ? (Y/N) :" << std::endl;
+    std::cout << "Do you want to continue playing ? (Y/N) :" << std::endl;
     std::cin >> continuePlaying;
     if (continuePlaying == "N" || continuePlaying == "n") {
         return false;
@@ -109,5 +109,12 @@ void Presentation::showNodeList(std::vector<node*> nodeList)
 void Presentation::showNoPathFound()
 {
     std::cout << "No Path found between the two nodes you selected with the maxDistance you entered!" << std::endl;
+}
+
+void Presentation::showNodeTooFar(node* nodeTooFar)
+{
+    if (nodeTooFar != nullptr) {
+        std::cout << "We have moved " << nodeTooFar->name << std::endl;
+    }
 }
 

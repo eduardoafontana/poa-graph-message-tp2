@@ -22,3 +22,14 @@ void node::addAdjacentNode(node* node)
 	this->adjacentNode.push_back(node);
 }
 
+void node::changePos(double newX, double newY)
+{
+	/// <summary>
+	/// Change the pos of the node. 
+	/// </summary>
+	/// <param name="newX">new pos x in the graph</param>
+	/// <param name="newY">new pos y in the graph</param>
+	this->posX = newX;
+	this->posY = newY;
+}
+

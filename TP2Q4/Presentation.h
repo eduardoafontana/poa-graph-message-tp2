@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <string>
 class Presentation
+//this class is for all the presentation of the game and the interaction with the user
 {
 public:
 	static void showPath(std::vector<node*>* path);
@@ -16,5 +17,6 @@ public:
 	static bool continuePlaying();
 	static void showNodeList(std::vector<node*> nodeList);
 	static void showNoPathFound();
+	static void showNodeTooFar(node* nodeTooFar);
 };
 

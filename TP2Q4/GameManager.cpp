@@ -34,8 +34,10 @@ GameManager::GameManager() {
                 Presentation::showPath(actualPath);
                 delete actualPath;
             }
-            else
+            else {
                 Presentation::showNoPathFound();
+                Presentation::showNodeTooFar(nodeManager.nodeTooFar);
+            }
 
 
             delete nodeVisited;

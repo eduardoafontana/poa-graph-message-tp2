@@ -2,11 +2,6 @@
 //
 #include "GameManager.h"
 
-
-
-/*int findShortestPath(std::vector<std::vector<node*>>* allPath);
-void addNode(node* node1, node* node2, int distance);
-void showPath(std::vector<node*>* path);*/
 int main()
 {
     //NodeManager manager;
